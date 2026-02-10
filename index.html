@@ -17,71 +17,74 @@
 </head>
 <body class="text-slate-300">
 
-    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+    <header class="border-b border-slate-800 bg-slate-900/20 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">LG</div>
-                <span class="font-bold text-xl text-white tracking-tighter uppercase">Lucas Galvão <span class="text-blue-500">Tests</span></span>
+                <span class="font-bold text-lg text-white tracking-tighter uppercase">LG <span class="text-blue-500">LAB</span></span>
             </div>
-            <span class="text-[10px] mono text-emerald-400 bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/20 uppercase">Gemini Tester Community</span>
+            <div class="flex gap-4">
+                <a href="https://github.com" target="_blank" class="hover:text-blue-400 transition"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-blue-400 transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
-        <section class="mb-16">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Log de <span class="gradient-text">Experimentos</span></h1>
-            <p class="max-w-2xl text-lg text-slate-400">Documentação técnica das capacidades do Gemini 3 Flash e ferramentas associadas.</p>
+    <main class="max-w-4xl mx-auto px-6 py-16">
+        
+        <section class="mb-20">
+            <span class="text-blue-500 mono text-xs uppercase tracking-widest block mb-2">Membro da Comunidade de Testadores Gemini</span>
+            <h1 class="text-5xl font-bold text-white mb-6">Lucas Galvão</h1>
+            <p class="text-xl text-slate-400 leading-relaxed">
+                Estrategista de tecnologia focado em <span class="text-white">IA Generativa</span>. 
+                Minha missão é explorar e implementar ferramentas de Inteligência Artificial para otimizar fluxos de trabalho e simplificar a vida cotidiana.
+            </p>
         </section>
 
-        <div id="logs-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="h-px bg-slate-800 w-full mb-16"></div>
+
+        <div class="flex items-center gap-3 mb-10">
+            <i data-lucide="terminal" class="text-blue-500 w-6 h-6"></i>
+            <h2 class="text-2xl font-bold text-white uppercase tracking-tight">Log de Experimentos</h2>
+        </div>
+
+        <div id="logs-container" class="grid md:grid-cols-2 gap-6">
             </div>
     </main>
 
     <script>
-        // --- SEU BANCO DE DADOS DE TESTES ---
-        // Para adicionar um teste novo, basta copiar um bloco { ... } e colar abaixo.
+        // --- BANCO DE DADOS DE TESTES ---
         const meusTestes = [
             {
                 id: "001",
-                titulo: "Deploy de Portfólio Profissional",
-                descricao: "Criação de estrutura base com Tailwind CSS e deploy automatizado via GitHub Pages.",
-                tags: ["Infra", "Web", "Gemini"],
-                icone: "cloud-lightning"
+                titulo: "Infraestrutura Base",
+                descricao: "Deploy de ambiente profissional via GitHub Pages e Codespaces.",
+                tags: ["GitHub", "Deploy"],
+                icone: "server"
             },
             {
                 id: "002",
-                titulo: "Primeiro Log Dinâmico",
-                descricao: "Implementação de sistema de renderização automática de cards via JavaScript.",
-                tags: ["JS", "Lógica", "Automated"],
-                icone: "database"
-            },
-            {
-                id: "003",
-                titulo: "Primeiro TESTE DE MELHORIA DO SITE COM CARD EM JAVA",
-                descricao: "Implementação de sistema de renderização automática de cards via JavaScript.",
-                tags: ["JS", "Lógica", "Automated"],
-                icone: "eye"
+                titulo: "Arquitetura de Log",
+                descricao: "Criação de sistema dinâmico para renderização de cards via JavaScript.",
+                tags: ["JS", "UX"],
+                icone: "layers"
             }
-            // PRÓXIMO TESTE AQUI...
         ];
 
         function carregarCards() {
             const container = document.getElementById('logs-container');
             container.innerHTML = meusTestes.map(teste => `
-                <div class="test-card bg-slate-900/50 p-6 rounded-xl flex flex-col">
+                <div class="test-card bg-slate-900/40 p-6 rounded-lg flex flex-col border border-slate-800">
                     <div class="flex justify-between items-start mb-4">
-                        <span class="text-[10px] mono text-blue-400 uppercase tracking-widest">ID #${teste.id}</span>
-                        <i data-lucide="${teste.icone}" class="w-5 h-5 text-slate-500"></i>
+                        <span class="text-[10px] mono text-blue-500 uppercase tracking-widest">EXP_${teste.id}</span>
+                        <i data-lucide="${teste.icone}" class="w-4 h-4 text-slate-600"></i>
                     </div>
-                    <h3 class="text-white font-bold text-xl mb-2">${teste.titulo}</h3>
+                    <h3 class="text-white font-bold text-lg mb-2">${teste.titulo}</h3>
                     <p class="text-slate-400 text-sm mb-6 leading-relaxed flex-grow">${teste.descricao}</p>
                     <div class="flex gap-2 mt-auto">
-                        ${teste.tags.map(tag => `<span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-1 rounded border border-slate-700 font-medium tracking-wide uppercase">${tag}</span>`).join('')}
+                        ${teste.tags.map(tag => `<span class="text-[9px] bg-slate-800/50 text-slate-400 px-2 py-1 rounded border border-slate-700/50 uppercase">${tag}</span>`).join('')}
                     </div>
                 </div>
             `).join('');
-            
-            // Recarrega os ícones após inserir o HTML
             lucide.createIcons();
         }
 
