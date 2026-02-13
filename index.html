@@ -10,10 +10,10 @@
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@400;700&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #020617; scroll-behavior: smooth; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .test-card { transition: all 0.3s ease; border: 1px solid #1e293b; cursor: pointer; }
+        .test-card { transition: all 0.3s ease; border: 1px solid #1e293b; cursor: pointer; height: 100%; }
         .test-card:hover { border-color: #38bdf8; transform: translateY(-4px); background: rgba(30, 41, 59, 0.5); }
         .gradient-text { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hidden { display: none; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body class="text-slate-300">
@@ -45,11 +45,12 @@
                 <h2 class="text-2xl font-bold text-white uppercase tracking-tight">Log de Experimentos</h2>
             </div>
 
-            <div id="logs-container" class="grid md:grid-cols-2 gap-6"></div>
+            <div id="logs-container" class="grid md:grid-cols-2 gap-6">
+                </div>
         </div>
 
         <div id="view-detalhes" class="hidden">
-            <button onclick="irParaHome()" class="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-8 transition">
+            <button onclick="irParaHome()" class="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-8 transition font-medium">
                 <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar para o Lab
             </button>
             <div id="conteudo-experimento"></div>
@@ -81,15 +82,7 @@
                 descricao: "Análise técnica de performance (O(n)) usando o modelo Gemini 3 Flash.",
                 tags: ["Prompt Eng", "Análise"],
                 icone: "cpu",
-                detalheFull: `
-                    <h2 class="text-2xl font-bold text-white mb-4">Análise de Complexidade</h2>
-                    <p class="mb-4">Neste teste, submetemos um código de filtragem de duplicados para auditoria da IA.</p>
-                    <div class="bg-slate-800 p-4 rounded mb-6 mono text-sm">
-                        Complexidade Identificada: O(n²) <br>
-                        Sugestão: Uso de Set() para O(n)
-                    </div>
-                    <p class="text-slate-400">O Gemini demonstrou capacidade sênior ao identificar que o método .indexOf() dentro de um .filter() causava um gargalo de processamento.</p>
-                `
+                detalheFull: `<h2 class="text-2xl font-bold text-white mb-4">Análise de Complexidade</h2><p class="mb-4">Neste teste, submetemos um código de filtragem de duplicados para auditoria da IA.</p><div class="bg-slate-800 p-4 rounded mb-6 mono text-sm text-blue-300 border border-slate-700">Complexidade Identificada: O(n²) <br>Sugestão: Uso de Set() para O(n)</div><p class="text-slate-400">O Gemini demonstrou capacidade sênior ao identificar que o método .indexOf() dentro de um .filter() causava um gargalo de processamento.</p>`
             },
             {
                 id: "004",
@@ -97,30 +90,60 @@
                 descricao: "Teste de fidelidade visual e composição fotorrealista da Amazônia.",
                 tags: ["Multimodal", "Imagem"],
                 icone: "image",
-                detalheFull: `
-                    <h2 class="text-2xl font-bold text-white mb-4">Exploração Visual: Bioma Amazônico</h2>
-                    <p class="mb-4">Neste experimento, testamos a capacidade do modelo em renderizar texturas complexas (pelagem da onça), reflexos na água e iluminação naturalista.</p>
-                    <div class="bg-slate-800 p-2 rounded-lg mb-6 border border-slate-700">
-                        <img src="./amazonia.png" alt="Amazônia IA" class="rounded w-full h-auto shadow-2xl">
-                        <p class="text-[10px] mono text-slate-500 mt-2 text-center uppercase">Prompt: Floresta amazônica, rio, onça bebendo água e araras azuis.</p>
-                    </div>
-                    <p class="text-slate-400">O resultado demonstrou uma alta precisão anatômica e um excelente controle de profundidade de campo, mantendo a coerência entre os múltiplos elementos solicitados no prompt.</p>
-                `
+                detalheFull: `<h2 class="text-2xl font-bold text-white mb-4">Exploração Visual: Bioma Amazônico</h2><p class="mb-4">Teste de renderização de texturas complexas, reflexos e iluminação naturalista.</p><div class="bg-slate-800 p-2 rounded-lg mb-6 border border-slate-700"><img src="./amazonia.png" alt="Amazônia IA" class="rounded w-full h-auto shadow-2xl"><p class="text-[10px] mono text-slate-500 mt-2 text-center uppercase">Prompt: Floresta amazônica, rio, onça e araras.</p></div><p class="text-slate-400">Demonstrou alta precisão anatômica e controle de profundidade de campo.</p>`
             },
             {
                 id: "005",
                 titulo: "Feedback de Comunidade",
-                descricao: "Contribuição estratégica para o conselho de testadores sobre o uso de IA em pequenos negócios.",
-                tags: ["Comunidade", "UX-Research"],
+                descricao: "Contribuição estratégica sobre o uso de IA em pequenos negócios.",
+                tags: ["Comunidade", "UX"],
                 icone: "message-square",
-                detalheFull: `
-                    <h2 class="text-2xl font-bold text-white mb-4">Relatório de Impacto: Pequenas Empresas</h2>
-                    <p class="mb-4">Neste experimento, documentamos a resposta oficial enviada aos moderadores da comunidade de testadores do Gemini, focando em produtividade real e lacunas tecnológicas.</p>
-                    <div class="space-y-4">
-                        <div class="bg-slate-800/50 p-4 rounded border-l-4 border-blue-500">
-                            <h4 class="text-sm font-bold text-blue-400 mb-1">O FOCO</h4>
-                            <p class="text-sm">Uso do Gemini como sintetizador de ideias e formatador técnico para otimizar o tempo do "empreendedor multitarefa".</p>
-                        </div>
-                        <div class="bg-slate-800/50 p-4 rounded border-l-4 border-emerald-500">
-                            <h4 class="text-sm font-bold text-emerald-400 mb-1">PROVA DE CONCEITO</h4>
-                            <p class="text-sm italic text-slate-400">"Utilização do chat dinâmico para a criação e
+                detalheFull: `<h2 class="text-2xl font-bold text-white mb-4">Relatório de Impacto</h2><p class="mb-6">Documentação da resposta enviada aos moderadores da comunidade de testadores.</p><div class="space-y-4"><div class="bg-slate-800/50 p-4 rounded border-l-4 border-blue-500"><h4 class="text-xs font-bold text-blue-400 mb-1">O FOCO</h4><p class="text-sm">Sintetização de ideias e formatação técnica.</p></div><div class="bg-slate-800/50 p-4 rounded border-l-4 border-emerald-500"><h4 class="text-xs font-bold text-emerald-400 mb-1">PROVA</h4><p class="text-sm italic text-slate-400">Deploy deste portfólio via chat dinâmico.</p></div><div class="bg-slate-800/50 p-4 rounded border-l-4 border-red-500"><h4 class="text-xs font-bold text-red-400 mb-1">LACUNA</h4><p class="text-sm">Necessidade de agentes autônomos integrados.</p></div></div>`
+            }
+        ];
+
+        function irParaHome() {
+            document.getElementById('view-home').classList.remove('hidden');
+            document.getElementById('view-detalhes').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function verDetalhes(id) {
+            const teste = meusTestes.find(t => t.id === id);
+            if (!teste) return;
+            const container = document.getElementById('conteudo-experimento');
+            container.innerHTML = `
+                <span class="text-blue-500 mono text-xs uppercase tracking-widest block mb-2">Experimento #${teste.id}</span>
+                <h1 class="text-4xl font-bold text-white mb-6 tracking-tight">${teste.titulo}</h1>
+                <div class="text-slate-300 leading-relaxed text-lg">${teste.detalheFull}</div>
+            `;
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-detalhes').classList.remove('hidden');
+            if (window.lucide) lucide.createIcons();
+            window.scrollTo(0, 0);
+        }
+
+        function carregarCards() {
+            const container = document.getElementById('logs-container');
+            if (!container) return;
+            container.innerHTML = meusTestes.map(teste => `
+                <div class="test-card bg-slate-900/40 p-6 rounded-lg flex flex-col border border-slate-800" onclick="verDetalhes('${teste.id}')">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] mono text-blue-500 uppercase tracking-widest">EXP_${teste.id}</span>
+                        <i data-lucide="${teste.icone}" class="w-4 h-4 text-slate-600"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2 tracking-tight">${teste.titulo}</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed flex-grow">${teste.descricao}</p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        ${teste.tags.map(tag => `<span class="text-[9px] bg-slate-800/50 text-slate-400 px-2 py-1 rounded border border-slate-700/50 uppercase font-bold">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // Inicia os cards assim que o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', carregarCards);
+    </script>
+</body>
+</html>
