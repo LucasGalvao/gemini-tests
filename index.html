@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -97,17 +97,15 @@
                 descricao: "Teste de fidelidade visual e composição fotorrealista da Amazônia.",
                 tags: ["Multimodal", "Imagem"],
                 icone: "image",
-               detalheFull: `
+                detalheFull: `
                     <h2 class="text-2xl font-bold text-white mb-4">Exploração Visual: Bioma Amazônico</h2>
                     <p class="mb-4">Neste experimento, testamos a capacidade do modelo em renderizar texturas complexas (pelagem da onça), reflexos na água e iluminação naturalista.</p>
-        
                     <div class="bg-slate-800 p-2 rounded-lg mb-6 border border-slate-700">
-                    <img src="./amazonia.png" alt="Amazônia IA" class="rounded w-full h-auto shadow-2xl">
-                    <p class="text-[10px] mono text-slate-500 mt-2 text-center uppercase">Prompt: Floresta amazônica, rio, onça bebendo água e araras azuis.</p>
-                </div>
-
+                        <img src="./amazonia.png" alt="Amazônia IA" class="rounded w-full h-auto shadow-2xl">
+                        <p class="text-[10px] mono text-slate-500 mt-2 text-center uppercase">Prompt: Floresta amazônica, rio, onça bebendo água e araras azuis.</p>
+                    </div>
                     <p class="text-slate-400">O resultado demonstrou uma alta precisão anatômica e um excelente controle de profundidade de campo, mantendo a coerência entre os múltiplos elementos solicitados no prompt.</p>
-   ` // A crase de fechamento deve estar aqui!
+                `
             },
             {
                 id: "005",
@@ -118,72 +116,11 @@
                 detalheFull: `
                     <h2 class="text-2xl font-bold text-white mb-4">Relatório de Impacto: Pequenas Empresas</h2>
                     <p class="mb-4">Neste experimento, documentamos a resposta oficial enviada aos moderadores da comunidade de testadores do Gemini, focando em produtividade real e lacunas tecnológicas.</p>
-        
                     <div class="space-y-4">
                         <div class="bg-slate-800/50 p-4 rounded border-l-4 border-blue-500">
                             <h4 class="text-sm font-bold text-blue-400 mb-1">O FOCO</h4>
                             <p class="text-sm">Uso do Gemini como sintetizador de ideias e formatador técnico para otimizar o tempo do "empreendedor multitarefa".</p>
                         </div>
-            
                         <div class="bg-slate-800/50 p-4 rounded border-l-4 border-emerald-500">
                             <h4 class="text-sm font-bold text-emerald-400 mb-1">PROVA DE CONCEITO</h4>
-                            <p class="text-sm italic text-slate-400">"Utilização do chat dinâmico para a criação e deploy deste próprio portfólio de testes."</p>
-                        </div>
-
-                        <div class="bg-slate-800/50 p-4 rounded border-l-4 border-red-500">
-                            <h4 class="text-sm font-bold text-red-400 mb-1">A LACUNA</h4>
-                            <p class="text-sm">Análise comparativa sobre a necessidade de agentes autônomos integrados para execução em máquinas virtuais.</p>
-                        </div>
-                    </div>
-
-                    <p class="mt-6 text-slate-400">Este log serve como registro da nossa primeira interação formal com o time de desenvolvimento do Google.</p>
-    `
-            } 
-        ];
-
-        function irParaHome() {
-            document.getElementById('view-home').classList.remove('hidden');
-            document.getElementById('view-detalhes').classList.add('hidden');
-            window.scrollTo(0,0);
-        }
-
-        function verDetalhes(id) {
-            const teste = meusTestes.find(t => t.id === id);
-            const container = document.getElementById('conteudo-experimento');
-            
-            container.innerHTML = `
-                <span class="text-blue-500 mono text-xs uppercase tracking-widest block mb-2 underline decoration-blue-500/30">Experimento #${teste.id}</span>
-                <h1 class="text-4xl font-bold text-white mb-6">${teste.titulo}</h1>
-                <div class="text-slate-300 leading-relaxed text-lg">
-                    ${teste.detalheFull}
-                </div>
-            `;
-            
-            document.getElementById('view-home').classList.add('hidden');
-            document.getElementById('view-detalhes').classList.remove('hidden');
-            lucide.createIcons();
-            window.scrollTo(0,0);
-        }
-
-        function carregarCards() {
-            const container = document.getElementById('logs-container');
-            container.innerHTML = meusTestes.map(teste => `
-                <div class="test-card bg-slate-900/40 p-6 rounded-lg flex flex-col border border-slate-800" onclick="verDetalhes('${teste.id}')">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="text-[10px] mono text-blue-500 uppercase tracking-widest tracking-tighter">EXP_${teste.id}</span>
-                        <i data-lucide="${teste.icone}" class="w-4 h-4 text-slate-600"></i>
-                    </div>
-                    <h3 class="text-white font-bold text-lg mb-2">${teste.titulo}</h3>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed flex-grow">${teste.descricao}</p>
-                    <div class="flex gap-2 mt-auto">
-                        ${teste.tags.map(tag => `<span class="text-[9px] bg-slate-800/50 text-slate-400 px-2 py-1 rounded border border-slate-700/50 uppercase font-bold tracking-tighter">${tag}</span>`).join('')}
-                    </div>
-                </div>
-            `).join('');
-            lucide.createIcons();
-        }
-
-        carregarCards();
-    </script>
-</body>
-</html>
+                            <p class="text-sm italic text-slate-400">"Utilização do chat dinâmico para a criação e
